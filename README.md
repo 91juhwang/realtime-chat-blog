@@ -1,24 +1,16 @@
-# README
+# Realtime Comments Blog ()
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built through BDD using RSpec/Capybara, this app serves realtime comments system using action-cable, where authenticated user can communicate realtime information about the specific post on a blog.
+The topics could be anything from a dumb meme to serious political discussions. Information should be shared freely and all of them should be respected. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+  * `ruby 2.3.0`
+  * `rails 5.0.2`
 
-* System dependencies
+## Usage
 
-* Configuration
+  * `bundle install`
+  * `rails db:migrate`
+  * `rails s`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
