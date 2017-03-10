@@ -11,6 +11,9 @@
         <div class="article-body">
           <%= truncate(a.body, length: 300) %>
         </div>
+        <div class="author">
+          <small>Created by: <%= a.user.email %></small>
+        </div>
       </div>
     </div>
   <% end %>
