@@ -1,11 +1,13 @@
-<article class="detail-article">
-  <h1 class="article-detail-title"><%= @article.title %></h1>
+<div class="col-md-6 col-md-offset-3 borders">
+  <article class="detail-article">
+    <h1 class="article-detail-title"><%= @article.title %></h1>
 
-  <div class="glyphicon glyphicon-calendar" id="article-date">
-    <%= @article.created_at.strftime("%b %d %Y") %>
-  </div>
+    <div class="glyphicon glyphicon-calendar" id="article-date">
+      <%= @article.created_at.strftime("%b %d %Y") %>
+    </div>
 
-  <div class="article-body">
-    <%= @article.body %>
-  </div>
-</article class="detail-article">
+    <div class="article-body">
+      <%= @article.body %>
+    </div>
+  </article class="detail-article">
+</div>

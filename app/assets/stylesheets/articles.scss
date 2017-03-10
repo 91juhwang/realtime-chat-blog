@@ -9,17 +9,21 @@
 .article-body {
   font-size: 1.5em;
   padding-left: 0.7em;
-  color: #64103F;
+  color: grey;
 }
 
 // show.html.erb
+
+.detail-article {
+
+}
 
 .article-detail-title {
   font-size: 3em;
   margin-bottom: 40px;
 }
 
-.article-show-body {
+.article-body {
   font-size: 1.5em;
   padding-left: 0em;
   margin-top: 15px;
@@ -27,4 +31,8 @@
 
 .edit-delete {
   margin-top: 20px;
+}
+
+.borders {
+  border: 1px solid lightgrey;
 }
