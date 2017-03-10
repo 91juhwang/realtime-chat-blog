@@ -1,3 +1,17 @@
-<h1>Rescent Articles</h1>
-
-
+<h1 class="text-center">Rescent Articles</h1>
+<% if @articles.empty? %>
+  <h1 id="no-articles">No Articles Created</h1>
+<% else %>
+  <% @articles.each do |a| %>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to a.title, article_path(a.id) %>
+        </div>
+        <div class="article-body">
+          <%= truncate(a.body, length: 300) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
