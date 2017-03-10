@@ -1,9 +1,17 @@
 require 'rails_helper'
 
 RSpec.feature 'Creating articles' do
-  scenario 'A user creates a new article' do
+  before do
+    @user = User.create(email: 'abc@gmail.com', password: '123456')
     visit root_path
+    click_link 'Sign in'
+    fill_in 'Email', with: 'abc@gmail.com'
+    fill_in 'Password', with: '123456'
+    click_button 'Log in'
+  end
 
+  scenario 'A user creates a new article' do
+   #do something in Bob's browser session
     click_link 'New Article'
 
     fill_in 'Title', with: 'Creating a blog'
@@ -16,8 +24,6 @@ RSpec.feature 'Creating articles' do
   end
 
   scenario 'A user fails to create a new article' do
-    visit root_path
-
     click_link 'New Article'
 
     fill_in 'Title', with: ''
