@@ -10,4 +10,5 @@
       <%= @article.body %>
     </div>
   </article class="detail-article">
+  <%= link_to 'edit', edit_article_path(@article.id), class: "btn btn-lg pull-right" %>
 </div>
