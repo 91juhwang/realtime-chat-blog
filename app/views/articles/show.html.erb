@@ -9,9 +9,12 @@
     <div class="article-body">
       <%= @article.body %>
     </div>
-  </article class="detail-article">
+  </article class="detail-article"> <br>
+  <p>Written by <%= @article.user.email %></p>
   <div class="edit-delete">
-    <%= link_to 'Delete Article', article_path(@article.id), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-space btn-md pull-right" %>
-    <%= link_to 'Edit Article', edit_article_path(@article.id), class: "btn btn-primary btn-space btn-md pull-right edit-btn" %>
+    <% if @article.user.id == current_user.id %>
+      <%= link_to 'Delete Article', article_path(@article.id), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-space btn-md pull-right" %>
+      <%= link_to 'Edit Article', edit_article_path(@article.id), class: "btn btn-primary btn-space btn-md pull-right edit-btn" %>
+    <% end %>
   </div>
 </div>
