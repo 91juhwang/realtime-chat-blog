@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def show
+    @comment = @article.comments.build
+  end
+
   def edit
     redirect_to root_path, alert: 'You can only edit your own articles.' unless @article.user == current_user
   end
