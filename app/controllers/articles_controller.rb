@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    redirect_to new_user_session_path, alert: 'Please sign in or sign up first' unless current_user
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
@@ -19,6 +20,11 @@ class ArticlesController < ApplicationController
       flash.now[:alert] = 'Article has not been created'
       render :new
     end
+  end
+
+  def show
+    @comment = @article.comments.build
+    @comments = @article.comments
   end
 
   def edit

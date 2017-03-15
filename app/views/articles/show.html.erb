@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3 borders">
+<div class="col-md-8 col-md-offset-2 borders">
   <article class="detail-article">
     <h1 class="article-detail-title"><%= @article.title %></h1>
 
@@ -7,7 +7,7 @@
     </div>
 
     <div class="article-body">
-      <%= @article.body %>
+      <%= simple_format(@article.body) %>
     </div>
   </article class="detail-article"> <br>
   <p>Written by <%= @article.user.email %></p>
@@ -17,4 +17,59 @@
       <%= link_to 'Edit Article', edit_article_path(@article.id), class: "btn btn-primary btn-space btn-md pull-right edit-btn" %>
     <% end %>
   </div>
+
+  <div class="col-md-8">
+    <%= form_for [@article, @comment], remote: true,
+        html: { class: "form-horizontal", role: "form" } do |f| %>
+      <!-- error section -->
+      <% if @comment.errors.any? %>
+        <div class="panel panel-danger col-md-offset-1">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= pluralize(@comment.errors.count, "error") %>
+              prohibited this comment from being saved:
+            </h3>
+            <div class="panel-body">
+              <ul>
+                <% @comment.errors.full_message.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <!-- Form section -->
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :body, 'New Comment' %>
+        </div>
+        <div class="col-md-10">
+          <%= f.text_area :body, rows: 5, class: 'form-control', placeholder: 'Your comment' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit 'Add Comment', class: "btn btn-primary btn-lg pull-right" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-10">
+    <header>
+      <h2>Comments</h2>
+    </header>
+    <div class="col-md-8">
+      <% if @article.comments.any? %>
+        <% persisted_comments(@comments).each do |c| %>
+          <div class='comment-body'>
+            <%= c.body %>
+          </div>
+          <p>created by: <%= c.user.email %> </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
