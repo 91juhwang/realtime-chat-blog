@@ -11,7 +11,7 @@
           <%= link_to a.title, article_path(a.id) %>
         </div>
         <div class="article-body">
-          <%= truncate(simple_format(a.body), length: 300) %>
+          <%= truncate(a.body, length: 100) %>
         </div>
         <div class="author">
           <small class="article-created-by">Created by: <%= a.user.email %></small>
