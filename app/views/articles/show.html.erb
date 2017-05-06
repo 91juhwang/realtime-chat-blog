@@ -10,14 +10,14 @@
       <%= simple_format(@article.body) %>
     </div>
   </article class="detail-article"> <br>
-  <p>Written by <%= @article.user.email %></p>
+  <p style="color: grey;"">Written by: <%= @article.user.email %></p>
   <div class="edit-delete">
     <% if @article.user.id == current_user.id %>
-      <%= link_to 'Delete Article', article_path(@article.id), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-space btn-md pull-right" %>
-      <%= link_to 'Edit Article', edit_article_path(@article.id), class: "btn btn-primary btn-space btn-md pull-right edit-btn" %>
+      <%= link_to 'Edit Article', edit_article_path(@article.id), class: "btn btn-primary btn-sm btn-space edit-btn" %>
+      <%= link_to 'Delete Article', article_path(@article.id), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-space btn-sm" %>
     <% end %>
   </div>
-
+<hr>
   <div class="col-md-8">
     <%= form_for [@article, @comment], remote: true,
         html: { class: "form-horizontal", role: "form" } do |f| %>
@@ -45,18 +45,18 @@
           <%= f.label :body, 'New Comment' %>
         </div>
         <div class="col-md-10">
-          <%= f.text_area :body, rows: 5, class: 'form-control', placeholder: 'Your comment' %>
+          <%= f.text_area :body, rows: 5, class: 'form-control', id: 'comment-submit-form', placeholder: 'Your comment' %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <%= f.submit 'Add Comment', class: "btn btn-primary btn-lg pull-right" %>
+          <%= f.submit 'Add Comment', class: "btn btn-primary btn-sm pull-right" %>
         </div>
       </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-10">
+    </div>
+  <% end %>
+  <div class="col-md-12">
+<hr>
     <header>
       <h2>Comments</h2>
     </header>
@@ -67,7 +67,8 @@
             <div class='comment-body'>
               <%= comment.body %>
             </div>
-            <p>created by: <%= comment.user.email %> </p>
+            <p style="color:grey;">created by: <%= comment.user.email %> </p>
+            <hr>
           <% end %>
         </div>
       <% end %>

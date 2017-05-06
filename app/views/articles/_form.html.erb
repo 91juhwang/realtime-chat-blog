@@ -1,3 +1,4 @@
+<br>
 <div class="row">
   <div class="col-md-10">
     <%= form_for @article, html: {class: "form-horizontal", role: "form"} do |f| %> 
@@ -36,9 +37,10 @@
           <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Body of an article' %>
         </div>
       </div>
+      <br>
       <div class="form-grop">
-        <div class="col-md-offset-1 col-md-2">
-          <%= f.submit class: 'btn btn-lg pull-right' %>
+        <div class="col-md-offset-6 col-md-6">
+          <%= f.submit class: 'btn btn-lg btn-primary'%>
         </div>
       </div>
     <% end %>
