@@ -62,12 +62,14 @@
     </header>
     <div class="col-md-8">
       <% if @article.comments.any? %>
-        <% persisted_comments(@comments).each do |c| %>
-          <div class='comment-body'>
-            <%= c.body %>
-          </div>
-          <p>created by: <%= c.user.email %> </p>
-        <% end %>
+        <div id="messages">
+          <% persisted_comments(@comments).each do |comment| %>
+            <div class='comment-body'>
+              <%= comment.body %>
+            </div>
+            <p>created by: <%= comment.user.email %> </p>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
