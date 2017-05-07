@@ -7,7 +7,7 @@
     </div>
 
     <div class="article-body">
-      <%= simple_format(@article.body) %>
+      <%= Rinku.auto_link(@article.body).html_safe %>
     </div>
   </article class="detail-article"> <br>
   <p style="color: grey;"">Written by: <%= @article.user.email %></p>

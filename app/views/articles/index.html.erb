@@ -11,7 +11,7 @@
           <%= link_to a.title, article_path(a.id) %>
         </div>
         <div class="article-body">
-          <%= truncate(a.body, length: 100) %>
+          <%= Rinku.auto_link(truncate(a.body, length: 100)).html_safe %>
         </div>
         <div class="author">
           <small class="article-created-by">Created by: <%= a.user.email %></small>
